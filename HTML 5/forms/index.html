@@ -9,62 +9,65 @@
   <body>
     <h2>Cadastro da liga dos astronautas</h2>
     <form action="#">
-      <label for="name">Nome:</label>
-      <input type="text" name="name" id="" />
+      <div>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" />
+        <br />
+      </div>
       <br />
+      <div>
+        <label for="email:">Email:</label>
+        <input type="email" name="email" id="email" />
+        <label for="password:">- Password:</label>
+        <input type="email" name="password" id="password" />
+      </div>
       <br />
-      <label for="email:">Email:</label>
-      <input type="email" name="email" id="" />
-      <label for="password:">- Password:</label>
-      <input type="email" name="password" id="" />
-      <br />
-      <br />
-      <label for="nascimento:">Data de nascimento:</label>
-      <input type="date" name="nascimento" id="" />
-      <label for="foto:">- Foto:</label>
-      <input type="file" name="foto" id="" />
-      <br />
-      <br />
-      <label for="nacionalidade">Nacionalidade:</label>
-      <input list="nacionalidade" />
-      <datalist id="nacionalidade">
-        <option value="Russo"></option>
-        <option value="Firefox"></option>
-        <option value="Chrome"></option>
-        <option value="Opera"></option>
-        <option value="Safari"></option>
-      </datalist>
+      <div>
+        <label for="birthday:">Data de nascimento:</label>
+        <input type="date" name="birthday" id="birthday" />-
+        <label for="photo:">- Foto:</label>
+        <input type="file" name="photo" id="photo" />
+      </div>
 
-      <label for="genero">- Genero:</label>
-      <label for="f">F</label>
-      <input type="radio" name="genero" id="f" value="feminino" />
-      <label for="m">M</label>
-      <input type="radio" name="genero" id="m" value="masculino" />
       <br />
+      <div>
+        <label for="nationality">Nacionalidade:</label>
+        <select name="nationality" id="nationality">
+          <option value="russian">Russa</option>
+          <option value="american">Americano</option>
+          <option value="brasilien">Brasileira</option>
+        </select>
+        - Genero:
+        <label for="female">F</label>
+        <input type="radio" name="gender" id="female" value="male" />
+        <label for="male">M</label>
+        <input type="radio" name="gender" id="male" value="male" />
+      </div>
       <br />
-      <p>Suas principais qualidades:</p>
-
-      <label for="inteligencia">Inteligência</label>
-      <input type="checkbox" name="inteligencia" />
-      <label for="resiliência">| Resiliência</label>
-      <input type="checkbox" name="resiliência" />
-      <label for="preparo-fisico">| Preparo físico</label>
-      <input type="checkbox" name="preparo-fisico" />
-      <label for="educacao">| Educação</label>
-      <input type="checkbox" name="educacao" />
-      <label>| </label>
+      <div>
+        Suas principais qualidades: <br />
+        <label for="int">Inteligência</label>
+        <input type="checkbox" name="int" id="int" />
+        <label for="res">| Resiliência</label>
+        <input type="checkbox" name="res" id="res" />
+        <label for="preparo-fisico">| Preparo físico</label>
+        <input type="checkbox" name="preparo-fisico" />
+        <label for="educacao">| Educação</label>
+        <input type="checkbox" name="educacao" />
+        <label>| </label>
+      </div>
       <br />
+      <div>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          placeholder="Porque você gostaria de ser um austronauta?"
+        ></textarea>
+      </div>
       <br />
-      <label for="texto"></label>
-      <input
-        type="text"
-        name="texto"
-        size="40"
-        placeholder="Porque você gostaria de ser um austronauta?"
-      />
-      <br />
-      <br />
-      <input type="button" value="Criar" />
+      <input type="submit" value="Criar" />
     </form>
   </body>
 </html>
