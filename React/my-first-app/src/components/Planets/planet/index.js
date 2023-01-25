@@ -1,6 +1,8 @@
 import React from "react";
 import GrayImg from "../../shared/gray_img";
 import DescriptionWithLink from "../../shared/DescriptionWithLink";
+import { useState, useEffect } from "react";
+import Form from "./form2";
 
 async function getSatellites(id) {
   let response = await fetch(`http://localhost:3000/api/${id}.json`);
@@ -8,45 +10,33 @@ async function getSatellites(id) {
   return data;
 }
 
-class Planet extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      satellites: [],
-    };
-  }
-  componentDidMount() {
-    getSatellites(this.props.id).then((data) => {
-      this.setState((state) => ({
-        satellites: data["satellites"],
-      }));
-    });
-  }
-  render() {
-    return (
-      <div>
-        <h4>{this.props.name}</h4>
-        <DescriptionWithLink
-          description={this.props.description}
-          link={this.props.link}
-        />
-        <GrayImg img_url={this.props.img_url} />
-        <h4>Satélites</h4>
-        <ul>
-          {this.state.satellites.map((element, index) => (
-            <li key={index}>{element.name}</li>
-          ))}
-        </ul>
+const Planet = (props) => {
+  const [satellites, setSatellites] = useState([]);
 
-        {/* <h1>Lista de satélites</h1>
+  useEffect(() => {
+    getSatellites(props.id).then((data) => {
+      setSatellites(data["satellites"]);
+    });
+  }, []);
+
+  const addSatellites = (new_satellites) => {
+    setSatellites([...satellites, new_satellites]);
+  };
+  return (
+    <div>
+      <h4>{props.name}</h4>
+      <DescriptionWithLink description={props.description} link={props.link} />
+      <GrayImg img_url={props.img_url} />
+      <h4>Satélites</h4>
+      <h2>Adicionando seu satélite</h2>
+      <Form addSatellites={addSatellites} />
       <ul>
-        {names.map((element) => (
-          <li>Nome: {element.toUpperCase()}</li>
+        {satellites.map((element, index) => (
+          <li key={index}>{element.name}</li>
         ))}
-      </ul> */}
-      </div>
-    );
-  }
-}
+      </ul>
+    </div>
+  );
+};
 
 export default Planet;
